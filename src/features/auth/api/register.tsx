@@ -17,6 +17,7 @@ export default async function Register(data: AuthSchema) {
   try {
     const response = await fetch(url, {
       method: "POST",
+      credentials: "include",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" },
     });
