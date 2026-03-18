@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background subtle texture circles -->
+  <circle cx="60" cy="60" r="40" fill="#FFF3E0" opacity="0.5"/>
+  <circle cx="340" cy="80" r="55" fill="#FFF3E0" opacity="0.4"/>
+  <circle cx="200" cy="290" r="60" fill="#FFF8F0" opacity="0.6"/>
+
+  <!-- Shopping cart body — hand-drawn feel with slight rotation -->
+  <g transform="translate(200,160) rotate(-2)">
+    <!-- Cart basket -->
+    <rect x="-90" y="-55" width="180" height="110" rx="10" ry="10"
+          fill="#FFF9F0" stroke="#2D2D2D" stroke-width="3.5"
+          stroke-linejoin="round"/>
+    <!-- Cart bottom bar -->
+    <rect x="-90" y="42" width="180" height="13" rx="6"
+          fill="#FFCA76" stroke="#2D2D2D" stroke-width="3"/>
+    <!-- Cart handle -->
+    <path d="M-90 -55 C-90 -90 90 -90 90 -55"
+          fill="none" stroke="#2D2D2D" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Cart grid lines horizontal -->
+    <line x1="-88" y1="-20" x2="88" y2="-20"
+          stroke="#E8D5B7" stroke-width="2" stroke-dasharray="6 4"/>
+    <line x1="-88" y1="12" x2="88" y2="12"
+          stroke="#E8D5B7" stroke-width="2" stroke-dasharray="6 4"/>
+    <!-- Cart grid line vertical -->
+    <line x1="0" y1="-53" x2="0" y2="42"
+          stroke="#E8D5B7" stroke-width="2" stroke-dasharray="6 4"/>
+    <!-- Cart wheels -->
+    <circle cx="-55" cy="62" r="12" fill="#FFCA76" stroke="#2D2D2D" stroke-width="3"/>
+    <circle cx="-55" cy="62" r="4" fill="#2D2D2D"/>
+    <circle cx="55" cy="62" r="12" fill="#FFCA76" stroke="#2D2D2D" stroke-width="3"/>
+    <circle cx="55" cy="62" r="4" fill="#2D2D2D"/>
+    <!-- Cart axle bar -->
+    <line x1="-90" y1="55" x2="90" y2="55"
+          stroke="#2D2D2D" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Floating food items around cart — hand-drawn doodle style -->
+
+  <!-- Apple - top left -->
+  <g transform="translate(68, 90) rotate(-15)">
+    <ellipse cx="0" cy="5" rx="22" ry="24" fill="#FF6B6B" stroke="#2D2D2D" stroke-width="2.5"/>
+    <path d="M2 -18 C2 -28 14 -32 14 -28" fill="none" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="0" cy="-2" rx="6" ry="10" fill="#FF8E8E" opacity="0.5"/>
+  </g>
+
+  <!-- Bread loaf - top right -->
+  <g transform="translate(318, 100) rotate(12)">
+    <ellipse cx="0" cy="0" rx="30" ry="20" fill="#F4A44E" stroke="#2D2D2D" stroke-width="2.5"/>
+    <ellipse cx="0" cy="-5" rx="22" ry="12" fill="#FFCE89" stroke="#2D2D2D" stroke-width="2"/>
+    <line x1="-15" y1="5" x2="15" y2="5" stroke="#C97D2E" stroke-width="1.5" stroke-dasharray="4 3"/>
+  </g>
+
+  <!-- Carrot - bottom left -->
+  <g transform="translate(95, 255) rotate(20)">
+    <path d="M0 -35 C-10 -10 -10 15 0 28 C10 15 10 -10 0 -35Z"
+          fill="#FF8C42" stroke="#2D2D2D" stroke-width="2.5"/>
+    <path d="M0 -35 C-5 -44 5 -48 2 -38" fill="none" stroke="#4CAF50" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M0 -35 C-12 -50 -8 -54 -3 -42" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round"/>
+    <path d="M0 -35 C8 -48 14 -46 7 -38" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Milk bottle - bottom right -->
+  <g transform="translate(310, 248) rotate(-8)">
+    <rect x="-14" y="-5" width="28" height="38" rx="5" fill="white" stroke="#2D2D2D" stroke-width="2.5"/>
+    <rect x="-10" y="-18" width="20" height="15" rx="4" fill="white" stroke="#2D2D2D" stroke-width="2.5"/>
+    <rect x="-14" y="18" width="28" height="12" rx="0" fill="#FFCA76" stroke="#2D2D2D" stroke-width="0"/>
+    <path d="M-14 18 L14 18 L14 30 Q14 33 10 33 L-10 33 Q-14 33 -14 30Z" fill="#FFCA76" stroke="#2D2D2D" stroke-width="2.5"/>
+    <ellipse cx="0" cy="3" rx="7" ry="7" fill="#E3F2FD" opacity="0.7"/>
+  </g>
+
+  <!-- Small star doodles -->
+  <g fill="none" stroke="#FFCA76" stroke-width="2" stroke-linecap="round">
+    <g transform="translate(155, 50)">
+      <line x1="0" y1="-8" x2="0" y2="8"/>
+      <line x1="-8" y1="0" x2="8" y2="0"/>
+      <line x1="-6" y1="-6" x2="6" y2="6"/>
+      <line x1="6" y1="-6" x2="-6" y2="6"/>
+    </g>
+    <g transform="translate(255, 45)">
+      <line x1="0" y1="-6" x2="0" y2="6"/>
+      <line x1="-6" y1="0" x2="6" y2="0"/>
+      <line x1="-4" y1="-4" x2="4" y2="4"/>
+      <line x1="4" y1="-4" x2="-4" y2="4"/>
+    </g>
+  </g>
+
+  <!-- Small dots decoration -->
+  <circle cx="140" cy="275" r="4" fill="#FFCA76" opacity="0.7"/>
+  <circle cx="260" cy="280" r="3" fill="#FF6B6B" opacity="0.6"/>
+  <circle cx="170" cy="40" r="5" fill="#4CAF50" opacity="0.5"/>
+
+  <!-- Text -->
+  <text x="200" y="315"
+        font-family="'Caveat', 'Comic Sans MS', cursive"
+        font-size="22"
+        font-weight="600"
+        fill="#6B4F3A"
+        text-anchor="middle"
+        letter-spacing="0.5">
+    Здесь пока пусто
+  </text>
+</svg>
