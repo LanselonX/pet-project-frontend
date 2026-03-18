@@ -1,5 +1,7 @@
 "use client";
 
+import { useForm } from "react-hook-form";
+import login, { loginSchema, LoginSchema } from "../api/login";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -7,25 +9,20 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "../../../components/ui/form";
-import { useForm } from "react-hook-form";
-import { Input } from "../../../components/ui/input";
-import { Button } from "../../../components/ui/button";
-import Register, { AuthSchema, formSchema } from "../api/register";
+} from "@/src/components/ui/form";
+import { Input } from "@/src/components/ui/input";
+import { Button } from "@/src/components/ui/button";
 
-async function onSubmit(values: AuthSchema) {
-  console.log("values is:", values);
-  await Register(values);
+function onSubmit(values: LoginSchema) {
+  login(values);
 }
 
-export const AuthForm = () => {
-  const form = useForm<AuthSchema>({
-    resolver: zodResolver(formSchema),
+export const LoginForm = () => {
+  const form = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
-      // TODO: NEED REMOVE ROLES
-      role: "USER",
     },
   });
 
@@ -60,8 +57,9 @@ export const AuthForm = () => {
             </FormItem>
           )}
         />
-
-        <Button type="submit">Submit</Button>
+        <Button variant="secondary" type="submit" className="w-full">
+          Login
+        </Button>
       </form>
     </Form>
   );
