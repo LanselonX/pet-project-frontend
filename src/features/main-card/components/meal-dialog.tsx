@@ -18,9 +18,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/src/components/ui/dialog";
+import { useCallback } from "react";
 
 export function MealDialog({ id }: MealCardProps) {
-  const { data } = useData<MealCard>(() => getMealById(id));
+  const cachedData = useCallback(() => getMealById(id), [id]);
+  const { data } = useData<MealCard>(cachedData);
+  console.log("data is here:", data);
 
   if (!data) return null;
 

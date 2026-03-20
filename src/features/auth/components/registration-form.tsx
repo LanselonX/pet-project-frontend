@@ -13,10 +13,6 @@ import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
 import registration, { AuthSchema, formSchema } from "../api/registration";
 
-function onSubmit(values: AuthSchema) {
-  registration(values);
-}
-
 export const RegistrationForm = () => {
   const form = useForm<AuthSchema>({
     resolver: zodResolver(formSchema),
@@ -28,6 +24,10 @@ export const RegistrationForm = () => {
       role: "USER",
     },
   });
+
+  function onSubmit(values: AuthSchema) {
+    registration(values);
+  }
 
   return (
     <Form {...form}>

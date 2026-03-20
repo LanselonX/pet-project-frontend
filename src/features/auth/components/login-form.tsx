@@ -13,10 +13,6 @@ import {
 import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
 
-function onSubmit(values: LoginSchema) {
-  login(values);
-}
-
 export const LoginForm = () => {
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
@@ -25,6 +21,10 @@ export const LoginForm = () => {
       password: "",
     },
   });
+
+  function onSubmit(values: LoginSchema) {
+    login(values);
+  }
 
   return (
     <Form {...form}>

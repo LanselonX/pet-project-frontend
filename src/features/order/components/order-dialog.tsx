@@ -17,6 +17,7 @@ import { getBadgeStatus } from "../utils/badge-status.utils";
 
 export const OrderDialog = ({ id }: OrderIdProps) => {
   const { data } = useData<OrderInfoId>(() => getOrderById(id));
+  console.log("order dialog data is:", data);
 
   if (!data) return null;
 
