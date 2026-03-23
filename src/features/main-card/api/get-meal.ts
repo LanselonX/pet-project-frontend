@@ -2,7 +2,7 @@ import { api } from "@/src/api/api";
 
 export const getAllMeals = async ({
   page = 1,
-  limit = 10,
+  limit = 6,
 }: {
   page: number;
   limit: number;

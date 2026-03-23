@@ -4,11 +4,7 @@ import { getMealById } from "../api/get-meal-by-id";
 import { Button } from "@/src/components/ui/button";
 import addToCart from "../api/add-to-cart";
 import Image from "next/image";
-import {
-  type MealCard,
-  type MealCardProps,
-} from "../types/main-card.interface";
-import { useData } from "@/src/hooks/use-data";
+import { MealCardProps } from "../types/main-card.interface";
 import {
   Dialog,
   DialogContent,
@@ -18,23 +14,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/src/components/ui/dialog";
-import { useCallback } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 export function MealDialog({ id }: MealCardProps) {
-  const cachedData = useCallback(() => getMealById(id), [id]);
-  const { data } = useData<MealCard>(cachedData);
-  console.log("data is here:", data);
+  const { data } = useQuery({
+    queryKey: ["meal", id],
+    queryFn: () => getMealById(id),
+  });
 
+  // TODO: need shadcn alert
+  const mutation = useMutation({
+    // TODO: CHECK DATA!
+    mutationFn: () => addToCart({ items: [{ mealId: data!.id, quantity: 1 }] }),
+  });
+
+  // TODO: I need a little better logic
   if (!data) return null;
 
-  const mealId = data.id;
-
-  // TODO: update this logic!
-  const items = [{ mealId: mealId, quantity: 1 }];
-
-  function cartSubmit() {
-    addToCart({ items });
-    console.log("submit is worked", { items });
+  function handleCartSubmit() {
+    return mutation.mutate();
   }
 
   return (
@@ -144,7 +142,7 @@ export function MealDialog({ id }: MealCardProps) {
             <Button
               variant="secondary"
               type="button"
-              onClick={cartSubmit}
+              onClick={handleCartSubmit}
               className="w-full"
             >
               Add to Cart

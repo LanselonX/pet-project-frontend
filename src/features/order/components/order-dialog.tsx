@@ -1,6 +1,5 @@
 "use client";
 
-import { useData } from "@/src/hooks/use-data";
 import { getOrderById } from "../api/get-order-by-id";
 import {
   Dialog,
@@ -12,11 +11,16 @@ import {
   DialogTrigger,
 } from "@/src/components/ui/dialog";
 import { Badge } from "@/src/components/ui/badge";
-import { OrderIdProps, OrderInfoId } from "../types/order.interface";
+import { OrderIdProps } from "../types/order.interface";
 import { getBadgeStatus } from "../utils/badge-status.utils";
+import { useQuery } from "@tanstack/react-query";
 
 export const OrderDialog = ({ id }: OrderIdProps) => {
-  const { data } = useData<OrderInfoId>(() => getOrderById(id));
+  const { data } = useQuery({
+    queryKey: ["orderId", id],
+    queryFn: () => getOrderById(id),
+  });
+
   console.log("order dialog data is:", data);
 
   if (!data) return null;

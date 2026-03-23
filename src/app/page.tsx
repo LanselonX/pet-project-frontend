@@ -9,13 +9,13 @@ export default async function Home(props: Props) {
   const searchParams = await props.searchParams;
 
   const page = Number(searchParams.page ?? 1);
+  // TODO: check this
   const limit = 6;
 
   const meals = await getAllMeals({ page, limit });
 
   return (
     <div>
-      {/* TODO: limit it's not best practise */}
       <MealsInfo {...meals} limit={limit} />
     </div>
   );

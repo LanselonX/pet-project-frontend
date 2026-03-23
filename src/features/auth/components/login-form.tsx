@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import login, { loginSchema, LoginSchema } from "../api/login";
+import { login, loginSchema, LoginSchema } from "../api/login";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -12,6 +12,7 @@ import {
 } from "@/src/components/ui/form";
 import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
+import { useMutation } from "@tanstack/react-query";
 
 export const LoginForm = () => {
   const form = useForm<LoginSchema>({
@@ -22,8 +23,13 @@ export const LoginForm = () => {
     },
   });
 
+  // TODO: check this!
+  const mutation = useMutation({
+    mutationFn: login,
+  });
+
   function onSubmit(values: LoginSchema) {
-    login(values);
+    mutation.mutate(values);
   }
 
   return (

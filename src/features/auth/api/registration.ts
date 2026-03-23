@@ -12,12 +12,7 @@ export const formSchema = z.object({
 
 export type AuthSchema = z.infer<typeof formSchema>;
 
-export default async function registration(data: AuthSchema) {
-  try {
-    return await api.post(`/auth/register`, data, {
-      headers: { "Content-Type": "application/json" },
-    });
-  } catch (error) {
-    console.log(error);
-  }
-}
+export const registration = async (data: AuthSchema) => {
+  const res = await api.post(`/auth/register`, data);
+  return res.data;
+};
