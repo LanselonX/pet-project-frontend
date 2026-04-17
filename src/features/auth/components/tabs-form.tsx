@@ -10,9 +10,19 @@ import { LoginForm } from "./login-form";
 export default function TabsForm() {
   return (
     <Tabs defaultValue="registration" className="flex flex-col ">
-      <TabsList className="mx-auto">
-        <TabsTrigger value="registration">Registration</TabsTrigger>
-        <TabsTrigger value="login">Login</TabsTrigger>
+      <TabsList className="w-full rounded-xl bg-muted p-1">
+        <TabsTrigger
+          value="registration"
+          className="flex-1 rounded-lg text-sm font-medium"
+        >
+          Registration
+        </TabsTrigger>
+        <TabsTrigger
+          value="login"
+          className="flex-1 rounded-lg text-sm font-medium"
+        >
+          Login
+        </TabsTrigger>
       </TabsList>
       <TabsContent value="registration">
         <RegistrationForm />

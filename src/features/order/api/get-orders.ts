@@ -1,10 +1,9 @@
 import { api } from "@/src/api/api";
+import { OrderInfo } from "../types/order.interface";
+import { IPagination } from "@/src/types/interface";
 
-export default async function getOrders() {
-  try {
-    const response = await api.get(`orders`);
-    return response.data;
-  } catch (err) {
-    console.log(err);
-  }
+// TODO: check orders
+export default async function getOrders(): Promise<IPagination<OrderInfo>> {
+  const response = await api.get(`orders`);
+  return response.data;
 }

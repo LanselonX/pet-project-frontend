@@ -3,16 +3,27 @@
 import Image from "next/image";
 import { Button } from "@/src/components/ui/button";
 import cartImage from "../../../public/empty-cart-2.svg";
-import { useData } from "@/src/hooks/use-data";
-import { CartResponse } from "../types/cart.interface";
 import { getCart } from "../api/get-cart";
-import createOrder from "../../order/api/create-order";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { createOrder } from "../../order/api/create-order";
 
 export const Cart = () => {
-  const { data } = useData<CartResponse>(getCart);
+  const queryClient = useQueryClient();
 
-  const handleCreateOrder = async () => {
-    return await createOrder();
+  const { data } = useQuery({
+    queryKey: ["cart"],
+    queryFn: getCart,
+  });
+
+  const mutation = useMutation({
+    mutationFn: createOrder,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
+  });
+
+  const handleCreateOrder = () => {
+    return mutation.mutate();
   };
 
   if (data && data.items.length > 0) {

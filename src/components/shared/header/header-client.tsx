@@ -1,7 +1,5 @@
 "use client";
 
-import logout from "@/src/features/auth/api/logout";
-
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -12,12 +10,19 @@ import {
   navigationMenuTriggerStyle,
 } from "../../ui/navigation-menu";
 import { Button } from "../../ui/button";
+import { useMutation } from "@tanstack/react-query";
+import { logout } from "@/src/features/auth/api/logout";
 
 export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
   const router = useRouter();
 
+  const mutation = useMutation({
+    mutationFn: logout,
+  });
+
   const handleLogout = async () => {
-    await logout();
+    mutation.mutate();
+    // TODOL check this!
     router.refresh();
   };
 

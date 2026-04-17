@@ -11,11 +11,8 @@ import {
 import { useForm } from "react-hook-form";
 import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
-import registration, { AuthSchema, formSchema } from "../api/registration";
-
-function onSubmit(values: AuthSchema) {
-  registration(values);
-}
+import { AuthSchema, formSchema, registration } from "../api/registration";
+import { useMutation } from "@tanstack/react-query";
 
 export const RegistrationForm = () => {
   const form = useForm<AuthSchema>({
@@ -28,6 +25,15 @@ export const RegistrationForm = () => {
       role: "USER",
     },
   });
+
+  // TODO: check this!
+  const mutation = useMutation({
+    mutationFn: registration,
+  });
+
+  function onSubmit(values: AuthSchema) {
+    mutation.mutate(values);
+  }
 
   return (
     <Form {...form}>

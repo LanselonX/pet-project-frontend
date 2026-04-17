@@ -1,6 +1,5 @@
 "use client";
 
-import { useData } from "@/src/hooks/use-data";
 import getOrders from "../api/get-orders";
 import {
   Card,
@@ -14,10 +13,14 @@ import { OrderDialog } from "./order-dialog";
 import { OrderInfo } from "../types/order.interface";
 import { getBadgeStatus } from "../utils/badge-status.utils";
 import { PaginationWithLinks } from "@/src/components/shared/pagination-with-link";
-import { IPagination } from "@/src/types/interface";
+import { useQuery } from "@tanstack/react-query";
 
 export const OrderDetails = () => {
-  const { data } = useData<IPagination<OrderInfo>>(getOrders);
+  const { data } = useQuery({
+    queryKey: ["order"],
+    queryFn: getOrders,
+  });
+
   console.log("data is:", data);
 
   if (!data) return null;
