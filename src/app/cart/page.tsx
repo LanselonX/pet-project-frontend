@@ -1,4 +1,4 @@
-import { Cart } from "@/src/features/cart/components/cart";
+import { Cart } from "@/src/entities/cart/ui/cart";
 
 export default function CartPage() {
   return (
