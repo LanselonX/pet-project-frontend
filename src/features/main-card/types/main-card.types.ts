@@ -1,3 +1,5 @@
+import { MEAL_TYPES } from "../constants/meal-constants";
+
 interface Micronutrients {
   omega: string;
   magnesium: string;
@@ -40,3 +42,5 @@ export interface Cart {
 export interface CartItems {
   items: Cart[];
 }
+
+export type MealType = (typeof MEAL_TYPES)[number];
