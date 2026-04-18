@@ -1,4 +1,4 @@
-import { AuthCard } from "@/src/features/auth/components/auth-card";
+import { AuthCard } from "@/entities/auth/ui/auth-card";
 
 export default function AuthPage() {
   return (

@@ -1,9 +1,9 @@
-import { MealsInfo } from "../features/main-card/components/meals-info";
+import { MealCard } from "@/entities/meal";
 
 export default function Home() {
   return (
     <div>
-      <MealsInfo />
+      <MealCard />
     </div>
   );
 }

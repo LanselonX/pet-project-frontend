@@ -1,4 +1,4 @@
-import { OrderDetails } from "@/src/features/order/components/order-info";
+import { OrderDetails } from "@/entities/order";
 
 export default function OrderPage() {
   return (
