@@ -8,11 +8,11 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "@/src/shared/ui/form";
-import { Input } from "@/src/shared/ui/input";
-import { Button } from "@/src/shared/ui/button";
+} from "@/shared/ui/form";
 import { useMutation } from "@tanstack/react-query";
 import { login, loginSchema, LoginSchema } from "../api/login";
+import { Input } from "@/shared/ui/input";
+import { Button } from "@/shared/ui/button";
 
 export const LoginForm = () => {
   const form = useForm<LoginSchema>({

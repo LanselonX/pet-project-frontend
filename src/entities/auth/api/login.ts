@@ -1,4 +1,4 @@
-import { api } from "@/src/shared/api/api";
+import { api } from "@/shared/api";
 import { z } from "zod";
 
 export const loginSchema = z.object({

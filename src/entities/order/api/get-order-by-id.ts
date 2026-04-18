@@ -1,4 +1,4 @@
-import { api } from "@/src/shared/api/api";
+import { api } from "@/shared/api/api";
 import { OrderInfoId } from "../model/order.interface";
 
 export const getOrderById = async (id: number): Promise<OrderInfoId> => {

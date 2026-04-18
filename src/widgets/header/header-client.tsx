@@ -11,7 +11,7 @@ import {
 } from "../../shared/ui/navigation-menu";
 import { Button } from "../../shared/ui/button";
 import { useMutation } from "@tanstack/react-query";
-import { logout } from "@/src/entities/auth/api/logout";
+import { logout } from "@/entities/auth/api/logout";
 
 export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
   const router = useRouter();

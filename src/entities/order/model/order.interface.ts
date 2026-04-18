@@ -1,5 +1,5 @@
-import { OrderStatus } from "@/src/features/order/model/order-status";
-import { Meal } from "@/src/shared/types/interface";
+import { Meal } from "@/shared/types";
+import { OrderStatus } from "./order-enum";
 
 export interface OrderInfo {
   id: number;

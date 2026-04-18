@@ -1,9 +1,9 @@
-import { MealsInfo } from "../entities/meal/ui/meal-card";
+import { MealCard } from "@/entities/meal";
 
 export default function Home() {
   return (
     <div>
-      <MealsInfo />
+      <MealCard />
     </div>
   );
 }

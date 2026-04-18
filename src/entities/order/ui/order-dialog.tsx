@@ -9,12 +9,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/src/shared/ui/dialog";
-import { Badge } from "@/src/shared/ui/badge";
+} from "@/shared/ui/dialog";
 import { useQuery } from "@tanstack/react-query";
 import { OrderIdProps } from "../model/order.interface";
-// TODO: CHECK THIS!
-import { orderBadge } from "@/src/features/order/ui/order-badge";
+import { Badge } from "@/shared/ui/badge";
+// TODO: CHECK THIS
+import { orderBadge } from "@/features/order";
 
 export const OrderDialog = ({ id }: OrderIdProps) => {
   const { data } = useQuery({

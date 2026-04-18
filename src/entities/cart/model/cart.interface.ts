@@ -1,4 +1,4 @@
-import { Meal } from "@/src/shared/types/interface";
+import { Meal } from "@/shared/types";
 
 export interface CartItems {
   mealId: number;
@@ -14,4 +14,14 @@ export interface Cart {
 export interface CartResponse {
   items: CartItems[];
   totalPrice: number;
+}
+
+// TODO: test interface
+export interface AddToCartItemDto {
+  mealId: number;
+  quantity: number;
+}
+
+export interface AddToCartDto {
+  items: AddToCartItemDto[];
 }

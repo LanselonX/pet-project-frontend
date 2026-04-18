@@ -4,7 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/src/shared/ui/card";
+} from "@/shared/ui/card";
 import AuthTabsForm from "./tabs-form";
 
 export function AuthCard() {

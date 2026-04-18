@@ -1,5 +1,5 @@
-import { api } from "@/src/shared/api/api";
-import { Meal } from "@/src/shared/types/interface";
+import { api } from "@/shared/api/api";
+import { Meal } from "@/shared/types";
 
 export const getAllMeals = async (types: string[]): Promise<Meal[]> => {
   const params = new URLSearchParams();

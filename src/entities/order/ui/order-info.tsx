@@ -7,13 +7,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/src/shared/ui/card";
-import { Badge } from "@/src/shared/ui/badge";
+} from "@/shared/ui/card";
 import { OrderDialog } from "./order-dialog";
 import { useQuery } from "@tanstack/react-query";
 import { OrderInfo } from "../model/order.interface";
-import { orderBadge } from "@/src/features/order/ui/order-badge";
-import { PaginationWithLinks } from "@/src/widgets/pagination-with-link";
+import { Badge } from "@/shared/ui/badge";
+import { orderBadge } from "@/features/order";
+import { PaginationWithLinks } from "@/widgets/pagination-with-link";
 
 export const OrderDetails = () => {
   const { data } = useQuery({

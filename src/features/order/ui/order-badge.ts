@@ -1,4 +1,4 @@
-import { OrderStatus } from "../model/order-status";
+import { OrderStatus } from "@/entities/order";
 
 export function orderBadge(status: OrderStatus) {
   switch (status) {

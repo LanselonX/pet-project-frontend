@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/src/shared/ui/button";
 import cartImage from "../../../public/empty-cart-2.svg";
 import { getCart } from "../api/get-cart";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createOrder } from "../../order/api/create.ordert";
+import { createOrder } from "../../order/api/create.order";
+import { Button } from "@/shared/ui/button";
 
 export const Cart = () => {
   const queryClient = useQueryClient();

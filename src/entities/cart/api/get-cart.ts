@@ -1,4 +1,4 @@
-import { api } from "@/src/shared/api/api";
+import { api } from "@/shared/api";
 import { CartResponse } from "../model/cart.interface";
 
 export const getCart = async (): Promise<CartResponse> => {

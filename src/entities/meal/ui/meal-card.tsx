@@ -1,20 +1,20 @@
 "use client";
 
+import Image from "next/image";
+import { MEAL_TYPES, MealName } from "../model/meal-constants";
+import { MealDialog } from "./meal-dialog";
+import { ToggleGroup, ToggleGroupItem } from "@/shared/ui/toggle-group";
+import { Meal } from "@/shared/types";
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/src/shared/ui/card";
-import Image from "next/image";
-import { Meal } from "@/src/shared/types/interface";
-import { ToggleGroup, ToggleGroupItem } from "@/src/shared/ui/toggle-group";
-import { MEAL_TYPES, MealName } from "../model/meal-constants";
-import { MealDialog } from "./meal-dialog";
-import { useMealFilter } from "@/src/features/meal/model/use-meal.filter";
+} from "@/shared/ui/card";
+import { useMealFilter } from "@/features/meal";
 
-export const MealsInfo = () => {
+export const MealCard = () => {
   const { data, handleTypeChange, selectedTypes } = useMealFilter();
 
   return (

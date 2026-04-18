@@ -1,7 +1,9 @@
 "use client";
 
-import { Button } from "@/src/shared/ui/button";
 import Image from "next/image";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { getMealById } from "../api/get-meal-by-id";
+import { MealCardProps } from "../model/meal-card.types";
 import {
   Dialog,
   DialogContent,
@@ -10,11 +12,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/src/shared/ui/dialog";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { getMealById } from "../api/get-meal-by-id";
-import { MealCardProps } from "../model/meal-card.types";
-import addToCart from "../api/add-to-cart";
+} from "@/shared/ui/dialog";
+import { Button } from "@/shared/ui/button";
+import { addToCart } from "@/entities/cart";
 
 export function MealDialog({ id }: MealCardProps) {
   const { data } = useQuery({

@@ -1,6 +1,6 @@
-import { getAllMeals } from "@/src/entities/meal/api/get-meal";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { getAllMeals } from "@/entities/meal";
 
 export const useMealFilter = () => {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);

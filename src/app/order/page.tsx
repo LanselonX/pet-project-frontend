@@ -1,4 +1,4 @@
-import { OrderDetails } from "@/src/entities/order/ui/order-info";
+import { OrderDetails } from "@/entities/order";
 
 export default function OrderPage() {
   return (

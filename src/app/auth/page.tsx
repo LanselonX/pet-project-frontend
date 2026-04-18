@@ -1,4 +1,4 @@
-import { AuthCard } from "@/src/entities/auth/ui/auth-card";
+import { AuthCard } from "@/entities/auth/ui/auth-card";
 
 export default function AuthPage() {
   return (
