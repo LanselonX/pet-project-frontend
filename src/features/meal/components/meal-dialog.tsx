@@ -4,7 +4,7 @@ import { getMealById } from "../api/get-meal-by-id";
 import { Button } from "@/src/components/ui/button";
 import addToCart from "../api/add-to-cart";
 import Image from "next/image";
-import { MealCardProps } from "../types/main-card.types";
+import { MealCardProps } from "../types/meal-types";
 import {
   Dialog,
   DialogContent,

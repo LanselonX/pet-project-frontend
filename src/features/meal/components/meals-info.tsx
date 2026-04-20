@@ -11,8 +11,8 @@ import Image from "next/image";
 import { MealDialog } from "./meal-dialog";
 import { Meal } from "@/src/types/interface";
 import { ToggleGroup, ToggleGroupItem } from "@/src/components/ui/toggle-group";
-import { useMealFilter } from "@/src/hooks/use-meal-filter";
 import { MEAL_TYPES, MealName } from "../constants/meal-constants";
+import { useMealFilter } from "../hooks/use-meal-filter";
 
 export const MealsInfo = () => {
   const { data, handleTypeChange, selectedTypes } = useMealFilter();

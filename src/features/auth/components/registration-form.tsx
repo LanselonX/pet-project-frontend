@@ -11,7 +11,11 @@ import {
 import { useForm } from "react-hook-form";
 import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
-import { AuthSchema, formSchema, registration } from "../api/registration";
+import {
+  authRegistration,
+  AuthSchema,
+  formSchema,
+} from "../api/auth-registration";
 import { useMutation } from "@tanstack/react-query";
 
 export const RegistrationForm = () => {
@@ -28,7 +32,7 @@ export const RegistrationForm = () => {
 
   // TODO: check this!
   const mutation = useMutation({
-    mutationFn: registration,
+    mutationFn: authRegistration,
   });
 
   function onSubmit(values: AuthSchema) {
