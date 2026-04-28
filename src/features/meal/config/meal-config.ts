@@ -1,4 +1,4 @@
-import { MealType } from "../types/main-card.types";
+import { MealType } from "../types/meal-types";
 
 export const MEAL_TYPES = [
   "ALL",

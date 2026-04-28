@@ -1,4 +1,4 @@
-import { MEAL_TYPES } from "../constants/meal-constants";
+import { MEAL_TYPES } from "../config/meal-config";
 
 interface Micronutrients {
   omega: string;
@@ -11,13 +11,13 @@ interface Micronutrients {
   sodium: string;
 }
 
-interface Macronutrients {
-  calories: string;
-  fat: string;
-  carbs: string;
-  protein: string;
-  fiber: string;
-  sugars: string;
+export interface Macronutrients {
+  calories: number;
+  fat: number;
+  carbs: number;
+  protein: number;
+  fiber: number;
+  sugars: number;
 }
 
 export interface MealCard {
@@ -28,6 +28,21 @@ export interface MealCard {
   ingredients: string;
   micronutrients?: Micronutrients;
   macronutrients?: Macronutrients;
+}
+
+export interface MacroConfig {
+  label: string;
+  key: keyof Macronutrients;
+  dv: number;
+  group: "primary" | "secondary";
+}
+
+export interface MealInfo {
+  id: number;
+  name: string;
+  description: string;
+  imageUrl: string;
+  macronutrients: Macronutrients;
 }
 
 export interface MealCardProps {

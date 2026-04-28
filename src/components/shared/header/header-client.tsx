@@ -11,13 +11,13 @@ import {
 } from "../../ui/navigation-menu";
 import { Button } from "../../ui/button";
 import { useMutation } from "@tanstack/react-query";
-import { logout } from "@/src/features/auth/api/logout";
+import { authLogout } from "@/src/features/auth/api/authLogout";
 
 export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: logout,
+    mutationFn: authLogout,
   });
 
   const handleLogout = async () => {

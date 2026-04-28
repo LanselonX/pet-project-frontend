@@ -8,7 +8,7 @@ export const loginSchema = z.object({
 
 export type LoginSchema = z.infer<typeof loginSchema>;
 
-export const login = async (data: LoginSchema) => {
+export const authLogin = async (data: LoginSchema) => {
   const res = await api.post(`/auth/login`, data);
   return res.data;
 };

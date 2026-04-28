@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { login, loginSchema, LoginSchema } from "../api/login";
+import { authLogin, loginSchema, LoginSchema } from "../api/authLogin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -25,7 +25,7 @@ export const LoginForm = () => {
 
   // TODO: check this!
   const mutation = useMutation({
-    mutationFn: login,
+    mutationFn: authLogin,
   });
 
   function onSubmit(values: LoginSchema) {
