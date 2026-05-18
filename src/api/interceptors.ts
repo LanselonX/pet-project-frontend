@@ -30,7 +30,9 @@ export const setupInterceptors = () =>
 
           return api(config);
         } catch {
-          window.location.href = "/auth";
+          if (typeof window !== "undefined") {
+            window.location.href = "/auth";
+          }
         }
       }
       return Promise.reject(error);

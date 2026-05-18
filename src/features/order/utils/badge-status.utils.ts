@@ -1,4 +1,4 @@
-import { OrderStatus } from "../types/order.interface";
+import { OrderStatus } from "../types/order.types";
 
 export function getBadgeStatus(status: OrderStatus) {
   switch (status) {

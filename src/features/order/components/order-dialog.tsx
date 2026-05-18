@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/src/components/ui/dialog";
 import { Badge } from "@/src/components/ui/badge";
-import { OrderIdProps } from "../types/order.interface";
+import { OrderIdProps } from "../types/order.types";
 import { getBadgeStatus } from "../utils/badge-status.utils";
 import { useQuery } from "@tanstack/react-query";
 

@@ -10,7 +10,7 @@ import {
 } from "@/src/components/ui/card";
 import { Badge } from "@/src/components/ui/badge";
 import { OrderDialog } from "./order-dialog";
-import { OrderInfo } from "../types/order.interface";
+import { OrderInfo } from "../types/order.types";
 import { getBadgeStatus } from "../utils/badge-status.utils";
 import { PaginationWithLinks } from "@/src/components/shared/pagination-with-link";
 import { useQuery } from "@tanstack/react-query";

@@ -15,3 +15,12 @@ export interface CartResponse {
   items: CartItems[];
   totalPrice: number;
 }
+
+export interface AddToCartItem {
+  mealId: string;
+  quantity: number;
+}
+
+export interface AddToCartPayload {
+  items: AddToCartItem[];
+}

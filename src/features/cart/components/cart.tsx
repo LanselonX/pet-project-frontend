@@ -22,10 +22,6 @@ export const Cart = () => {
     },
   });
 
-  const handleCreateOrder = () => {
-    return mutation.mutate();
-  };
-
   if (data && data.items.length > 0) {
     return (
       <div>
@@ -100,7 +96,7 @@ export const Cart = () => {
               </div>
             </div>
 
-            <Button className="mt-6" onClick={handleCreateOrder}>
+            <Button className="mt-6" onClick={() => mutation.mutate()}>
               Confirm Order
             </Button>
           </div>

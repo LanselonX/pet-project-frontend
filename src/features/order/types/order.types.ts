@@ -1,4 +1,5 @@
 import { Meal } from "@/src/types/interface";
+import { ORDER_STATUS_TYPES } from "../config/order-config";
 
 export enum OrderStatus {
   PENDING = "PENDING",
@@ -6,6 +7,17 @@ export enum OrderStatus {
   DELIVERED = "DELIVERED",
   CANCELED = "CANCELED",
 }
+
+export type OrderStatusType = (typeof ORDER_STATUS_TYPES)[number];
+
+export type OrderTable = {
+  id: number;
+  status: OrderStatus;
+  userId: number;
+  totalPrice: number;
+  createdAt: string;
+  updatedAt: string;
+};
 
 export interface OrderInfo {
   id: number;
