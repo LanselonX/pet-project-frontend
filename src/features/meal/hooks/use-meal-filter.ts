@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { getAllMeals } from "../api/get-meal";
+import { getAllMeals } from "../api/get-meals";
 
 export const useMealFilter = () => {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);

@@ -14,7 +14,7 @@ import { MealInfo } from "../types/meal-types";
 import { Dialog, DialogTrigger } from "@/src/components/ui/dialog";
 import { MealDialogContent } from "./meal-dialog-content";
 import { MEAL_TYPES, MealName } from "../config/meal-config";
-import { getMacronutrients } from "../utils/nutrition.config";
+import { getMacronutrients } from "../utils/nutrition-utils";
 
 export const MealsInfo = () => {
   const { data, handleTypeChange, selectedTypes } = useMealFilter();

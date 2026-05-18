@@ -1,4 +1,4 @@
-import { MealsInfo } from "../features/meal/components/meals-info";
+import { MealsInfo } from "../../features/meal/components/meals-info";
 
 export default function Home() {
   return (

@@ -2,9 +2,7 @@
 
 import { getMealById } from "../api/get-meal-by-id";
 import { Button } from "@/src/components/ui/button";
-import addToCart from "../api/add-to-cart";
 import Image from "next/image";
-import { MealCardProps } from "../types/meal-types";
 import {
   DialogContent,
   DialogDescription,
@@ -12,27 +10,19 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/src/components/ui/dialog";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { MacroProgress } from "./macro-progress";
+import { useAddToCart } from "../../cart/hooks/use-add-to-cart";
 
-export function MealDialogContent({ id }: MealCardProps) {
+export function MealDialogContent({ id }: { id: number }) {
   const { data } = useQuery({
     queryKey: ["meal", id],
     queryFn: () => getMealById(id),
   });
 
-  // TODO: need shadcn alert
-  const mutation = useMutation({
-    // TODO: CHECK DATA!
-    mutationFn: () => addToCart({ items: [{ mealId: data!.id, quantity: 1 }] }),
-  });
+  const mutation = useAddToCart();
 
-  // TODO: I need a little better logic
   if (!data) return null;
-
-  function handleCartSubmit() {
-    return mutation.mutate();
-  }
 
   return (
     <DialogContent className="max-w-none! w-[50vw]!">
@@ -107,7 +97,7 @@ export function MealDialogContent({ id }: MealCardProps) {
         <Button
           variant="secondary"
           type="button"
-          onClick={handleCartSubmit}
+          onClick={() => mutation.mutate(data.id)}
           className="w-full"
         >
           Add to Cart
