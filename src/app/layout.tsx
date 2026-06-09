@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import QueryProvider from "./(root)/components/query-provider";
+import QueryProvider from "../providers/query-provider";
 import "../styles/globals.css";
 
 const geistSans = Geist({
@@ -22,7 +22,6 @@ export default function Layout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* TODO: check this! */}
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
