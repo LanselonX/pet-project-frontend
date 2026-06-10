@@ -13,6 +13,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { MacroProgress } from "./macro-progress";
 import { useAddToCart } from "../../cart/hooks/use-add-to-cart";
+import { MICROS } from "../config/nutrition.config";
 
 export function MealDialogContent({ id }: { id: number }) {
   const { data } = useQuery({
@@ -25,74 +26,46 @@ export function MealDialogContent({ id }: { id: number }) {
   if (!data) return null;
 
   return (
-    <DialogContent className="max-w-none! w-[50vw]!">
+    <DialogContent className="w-[95vw] sm:max-w-3xl max-h-[90vh] overflow-y-auto">
       <DialogHeader>
         <DialogTitle>{data.name}</DialogTitle>
         <DialogDescription>{data.description}</DialogDescription>
       </DialogHeader>
-
-      <div className="flex gap-6">
-        {data.imageUrl && (
-          <Image
-            className="object-cover rounded-md shrink-0"
-            src={data.imageUrl}
-            alt={data.name}
-            width={340}
-            height={340}
-          />
-        )}
-
-        <div className="flex flex-col gap-4 flex-1">
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="relative w-full md:w-85 shrink-0 self-stretch min-h-60 rounded-md overflow-hidden">
+          {data.imageUrl && (
+            <Image
+              className="object-cover"
+              src={data.imageUrl}
+              alt={data.name}
+              fill
+            />
+          )}
+        </div>
+        <div className="flex flex-col gap-4 flex-1 min-w-0">
           <div>
             <h1 className="text-xl font-medium mb-1">Состав</h1>
             <p className="text-sm text-muted-foreground">{data.ingredients}</p>
           </div>
-
           <div>
-            <h2 className="text-lg font-medium mb-2">Микронутриенты:</h2>
+            <h2 className="text-lg font-medium mb-2">Макронутриенты:</h2>
             <MacroProgress data={data} />
           </div>
-
-          <div>
-            <h2 className="text-lg font-medium mb-2">Микронутриенты</h2>
-            <ul className="text-sm space-y-1">
-              <li>
-                <span className="text-muted-foreground">Омега:</span>{" "}
-                {data?.micronutrients?.omega}
-              </li>
-              <li>
-                <span className="text-muted-foreground">Магний:</span>{" "}
-                {data?.micronutrients?.magnesium}
-              </li>
-              <li>
-                <span className="text-muted-foreground">Витамин D:</span>{" "}
-                {data?.micronutrients?.vitaminD}
-              </li>
-              <li>
-                <span className="text-muted-foreground">Витамин B:</span>{" "}
-                {data?.micronutrients?.vitaminB}
-              </li>
-              <li>
-                <span className="text-muted-foreground">Кальций:</span>{" "}
-                {data?.micronutrients?.calcium}
-              </li>
-              <li>
-                <span className="text-muted-foreground">Железо:</span>{" "}
-                {data?.micronutrients?.iron}
-              </li>
-              <li>
-                <span className="text-muted-foreground">Калий:</span>{" "}
-                {data?.micronutrients?.potassium}
-              </li>
-              <li>
-                <span className="text-muted-foreground">Натрий:</span>{" "}
-                {data?.micronutrients?.sodium}
-              </li>
-            </ul>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+            {MICROS.map(({ label, value }) => (
+              <div
+                key={label}
+                className="flex items-center justify-between border-b border-border/40 pb-1"
+              >
+                <span className="text-muted-foreground">{label}</span>
+                <span className="font-medium tabular-nums">
+                  {data.micronutrients?.[value]}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-
       <DialogFooter>
         <Button
           variant="secondary"
