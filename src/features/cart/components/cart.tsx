@@ -7,14 +7,35 @@ import cartImage from "../../../public/empty-cart-2.svg";
 import { getCart } from "../api/get-cart";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createOrder } from "../../order/api/create-order";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/src/components/ui/alert-dialog";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export const Cart = () => {
   const queryClient = useQueryClient();
   const { data } = useQuery({ queryKey: ["cart"], queryFn: getCart });
+  const router = useRouter();
 
   const mutation = useMutation({
     mutationFn: createOrder,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["cart"] }),
+    onSuccess: () => {
+      toast.success("Successfully");
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+      router.push("/order");
+    },
+    onError: () => {
+      toast.error("Error");
+    },
   });
 
   if (!data || data.items.length === 0) {
@@ -88,7 +109,6 @@ export const Cart = () => {
                   <span className="text-muted-foreground">
                     {item.meal.name}
                     <span className="text-muted-foreground/60">
-                      {" "}
                       · {item.quantity} шт
                     </span>
                   </span>
@@ -108,13 +128,31 @@ export const Cart = () => {
               </span>
             </div>
 
-            <Button
-              className="mt-5 w-full"
-              onClick={() => mutation.mutate()}
-              disabled={mutation.isPending}
-            >
-              {mutation.isPending ? "Оформляем…" : "Оформить заказ"}
-            </Button>
+            <AlertDialog>
+              <AlertDialogTrigger
+                render={
+                  <Button className="mt-5 w-full" disabled={mutation.isPending}>
+                    {mutation.isPending ? "Оформляем…" : "Оформить заказ"}
+                  </Button>
+                }
+              />
+
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Confirm your order</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Please review your order details before placing your order.
+                    Once confirmed, we will begin processing your order
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={() => mutation.mutate()}>
+                    Continue
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
         </aside>
       </div>

@@ -12,7 +12,7 @@ import {
 } from "@/src/components/ui/form";
 import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
-import { useMutation } from "@tanstack/react-query";
+import { useAuthMutation } from "../hooks/use-auth-mutation";
 
 export const LoginForm = () => {
   const form = useForm<LoginSchema>({
@@ -23,9 +23,9 @@ export const LoginForm = () => {
     },
   });
 
-  // TODO: check this!
-  const mutation = useMutation({
-    mutationFn: authLogin,
+  const mutation = useAuthMutation(authLogin, {
+    success: "Login successful",
+    error: "Login failed",
   });
 
   function onSubmit(values: LoginSchema) {
