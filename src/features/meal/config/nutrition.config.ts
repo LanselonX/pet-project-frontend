@@ -2,6 +2,7 @@ import {
   AdminMacroConfig,
   AdminMicroConfig,
   MacroConfig,
+  MicroConfig,
 } from "../types/nutrition-types";
 
 export const MACROS: MacroConfig[] = [
@@ -39,3 +40,15 @@ export const ADMINMICRO: AdminMicroConfig[] = [
   { name: "micronutrients.potassium", label: "Калий", unit: "mg" },
   { name: "micronutrients.sodium", label: "Натрий", unit: "mg" },
 ] as const;
+
+// TODO: translate labels to English if needed
+export const MICROS: MicroConfig[] = [
+  { label: "Омега", value: "omega" },
+  { label: "Магний", value: "magnesium" },
+  { label: "Витамин D", value: "vitaminD" },
+  { label: "Витамин B", value: "vitaminB" },
+  { label: "Кальций", value: "calcium" },
+  { label: "Железо", value: "iron" },
+  { label: "Калий", value: "potassium" },
+  { label: "Натрий", value: "sodium" },
+] as const satisfies MicroConfig[];

@@ -29,38 +29,43 @@ export const OrderDialog = ({ id }: OrderIdProps) => {
     <div>
       <Dialog>
         <DialogTrigger>Подробнее о заказе</DialogTrigger>
-        <DialogContent>
+        <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>
-              <div className="flex justify-between">
-                <div className="flex gap-2 flex-col">
-                  <p>Order number: {data.id}</p>
-                  <span>{new Date(data.createdAt).toDateString()}</span>
-                </div>
-                <Badge variant={getBadgeStatus(data.status)} className="mx-4">
-                  {data.status}
-                </Badge>
+            <div className="flex items-start justify-between gap-4 pr-8">
+              <div className="flex flex-col gap-1">
+                <DialogTitle>Заказ #{data.id}</DialogTitle>
+                <DialogDescription>
+                  {new Date(data.createdAt).toDateString()}
+                </DialogDescription>
               </div>
-            </DialogTitle>
-            <DialogDescription></DialogDescription>
-            <div>
-              {data.items.map((item) => (
-                <div key={item.meal.id} className="py-2">
-                  <div className="flex justify-between">
-                    <p className="font-bold">{item.meal.name}</p>
-                    <div className="flex gap-4">
-                      <p>{item.price}₴</p> x<p>{item.quantity}</p>
-                    </div>
-                  </div>
-                  <p>{item.meal.description}</p>
-                </div>
-              ))}
+              <Badge variant={getBadgeStatus(data.status)}>{data.status}</Badge>
             </div>
           </DialogHeader>
-          <DialogFooter>
-            <div>
-              <p>Итого: {data.totalPrice} ₴</p>
-            </div>
+
+          <div className="divide-y divide-border">
+            {data.items.map((item) => (
+              <div
+                key={item.meal.id}
+                className="flex items-start justify-between gap-4 py-3"
+              >
+                <div className="min-w-0">
+                  <p className="font-medium">{item.meal.name}</p>
+                  <p className="mt-0.5 text-sm text-muted-foreground line-clamp-1">
+                    {item.meal.description}
+                  </p>
+                </div>
+                <span className="shrink-0 text-sm tabular-nums text-muted-foreground">
+                  {item.price} ₴ × {item.quantity}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <DialogFooter className="sm:justify-between">
+            <span className="text-muted-foreground">Итого</span>
+            <span className="text-lg font-semibold tabular-nums">
+              {data.totalPrice} ₴
+            </span>
           </DialogFooter>
         </DialogContent>
       </Dialog>

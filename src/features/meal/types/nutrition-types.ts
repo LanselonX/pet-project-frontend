@@ -28,6 +28,11 @@ export interface MacroConfig {
   group: "primary" | "secondary";
 }
 
+export interface MicroConfig {
+  label: string;
+  value: keyof Micronutrients;
+}
+
 export interface AdminMacroConfig {
   name: Path<MealInfoSchema>;
   label: string;
