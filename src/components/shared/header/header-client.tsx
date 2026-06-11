@@ -2,6 +2,10 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Button } from "../../ui/button";
+import { useMutation } from "@tanstack/react-query";
+import { authLogout } from "@/src/features/auth/api/authLogout";
+import { toast } from "sonner";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -9,22 +13,20 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "../../ui/navigation-menu";
-import { Button } from "../../ui/button";
-import { useMutation } from "@tanstack/react-query";
-import { authLogout } from "@/src/features/auth/api/authLogout";
 
 export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
   const router = useRouter();
 
   const mutation = useMutation({
     mutationFn: authLogout,
+    onSuccess: () => {
+      toast.success("Logout success");
+      router.refresh();
+    },
+    onError: () => {
+      toast.error("Logout Error");
+    },
   });
-
-  const handleLogout = async () => {
-    mutation.mutate();
-    // TODOL check this!
-    router.refresh();
-  };
 
   return (
     <header className="flex justify-between items-center px-8 py-4">
@@ -54,7 +56,7 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
               <NavigationMenuItem>
                 <Button
                   variant="link"
-                  onClick={handleLogout}
+                  onClick={() => mutation.mutate()}
                   className={navigationMenuTriggerStyle()}
                 >
                   Logout

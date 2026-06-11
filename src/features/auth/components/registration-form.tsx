@@ -16,7 +16,7 @@ import {
   AuthSchema,
   formSchema,
 } from "../api/auth-registration";
-import { useMutation } from "@tanstack/react-query";
+import { useAuthMutation } from "../hooks/use-auth-mutation";
 
 export const RegistrationForm = () => {
   const form = useForm<AuthSchema>({
@@ -30,9 +30,9 @@ export const RegistrationForm = () => {
     },
   });
 
-  // TODO: check this!
-  const mutation = useMutation({
-    mutationFn: authRegistration,
+  const mutation = useAuthMutation(authRegistration, {
+    success: "Registration successful",
+    error: "Registration failed",
   });
 
   function onSubmit(values: AuthSchema) {
