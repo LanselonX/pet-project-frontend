@@ -7,10 +7,9 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "pet-project-backend-production.up.railway.app",
         pathname: "/assets/**",
-        // port: "3000",
       },
     ],
-    unoptimized: process.env.NODE_ENV === "development",
+    unoptimized: true,
   },
 };
 
