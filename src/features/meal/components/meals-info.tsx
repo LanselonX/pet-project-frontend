@@ -44,6 +44,7 @@ export const MealsInfo = () => {
                       src={meal.imageUrl}
                       alt={meal.name}
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      unoptimized
                     />
                   )}
                 </div>
