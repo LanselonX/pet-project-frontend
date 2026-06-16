@@ -23,6 +23,7 @@ export const MealsInfo = () => {
           spacing={2}
           value={selectedTypes}
           onValueChange={(values) => handleTypeChange(values)}
+          className="flex flex-wrap justify-center"
         >
           {MEAL_TYPES.map((type) => (
             <ToggleGroupItem key={type} value={type}>
@@ -31,7 +32,7 @@ export const MealsInfo = () => {
           ))}
         </ToggleGroup>
       </div>
-      <div className="grid grid-cols-4 gap-6 px-8">
+      <div className="grid grid-cols-1 gap-4 px-4 sm:grid-cols-2 sm:gap-6 sm:px-6 lg:grid-cols-3 lg:px-8 xl:grid-cols-4">
         {data?.map((meal: MealInfo) => (
           <Dialog key={meal.id}>
             <DialogTrigger asChild>
@@ -40,7 +41,7 @@ export const MealsInfo = () => {
                   {meal.imageUrl && (
                     <Image
                       fill
-                      sizes="(max-width: 768px) 100vw, 25vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                       src={meal.imageUrl}
                       alt={meal.name}
                       className="object-cover transition-transform duration-500 group-hover:scale-105"

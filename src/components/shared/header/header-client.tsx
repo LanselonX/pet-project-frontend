@@ -29,7 +29,7 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
   });
 
   return (
-    <header className="flex justify-between items-center px-8 py-4">
+    <header className="flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-4">
       <Link href="/">
         <h1 className="font-bold text-2xl">Pet Project Frontend/Backend</h1>
       </Link>
