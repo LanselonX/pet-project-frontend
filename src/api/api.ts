@@ -1,8 +1,6 @@
 import axios from "axios";
 import { setupInterceptors } from "./interceptors";
 
-// const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
 const baseUr =
   typeof window === "undefined"
     ? process.env.API_PROXY_DESTINATION
