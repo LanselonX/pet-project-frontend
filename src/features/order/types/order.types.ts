@@ -15,8 +15,8 @@ export type OrderTable = {
   status: OrderStatus;
   userId: number;
   totalPrice: number;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export interface OrderInfo {

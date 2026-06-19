@@ -1,6 +1,6 @@
 import { api } from "@/src/api/api";
+import { AddToCartPayload } from "../types/cart.interface";
 
-// TODO: change any type
-export default async function addToCart(data: any) {
-  return await api.post(`/cart`, data);
+export default async function addToCart(data: AddToCartPayload) {
+  return await api.post<void>(`/cart`, data);
 }

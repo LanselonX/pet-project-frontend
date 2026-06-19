@@ -8,7 +8,7 @@ export const mealInfoSchema = z.object({
   ingredients: z.string(),
   imageUrl: z.string(),
   price: z.number(),
-  chefId: z.string().nullable(),
+  chefId: z.number().nullable(),
   macronutrients: z.object({
     calories: z.number(),
     fat: z.number(),

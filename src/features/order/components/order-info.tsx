@@ -16,6 +16,7 @@ import { PaginationWithLinks } from "@/src/components/shared/pagination-with-lin
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/src/components/ui/button";
 import Link from "next/link";
+import { formatTime } from "@/src/lib/format-time";
 
 export const OrderDetails = () => {
   const { data } = useQuery({
@@ -26,7 +27,7 @@ export const OrderDetails = () => {
   console.log("data is:", data);
 
   if (!data) return null;
-  // TODO: check this!!!
+
   const orders = data?.data || [];
 
   if (orders.length === 0) {
@@ -50,8 +51,7 @@ export const OrderDetails = () => {
           <Card className="rounded-xl p-4 m-4">
             <CardHeader className="flex justify-between">
               <CardTitle>Order number #{order.id}</CardTitle>
-              {/* TODO: temporary solution */}
-              <span>{new Date(order.createdAt).toDateString()}</span>
+              <span>{formatTime(order.createdAt)}</span>
             </CardHeader>
             <CardContent className="flex justify-between">
               <p>Финальная цена: {order.totalPrice}₴</p>

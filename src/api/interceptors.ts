@@ -21,7 +21,7 @@ export const setupInterceptors = () =>
     },
     async (error) => {
       const config = error.config;
-      if (error.response.status === 401 && !config._retry) {
+      if (error.response?.status === 401 && !config._retry) {
         config._retry = true;
 
         try {

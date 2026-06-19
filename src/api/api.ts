@@ -1,10 +1,15 @@
 import axios from "axios";
 import { setupInterceptors } from "./interceptors";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+// const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+const baseUr =
+  typeof window === "undefined"
+    ? process.env.API_PROXY_DESTINATION
+    : process.env.NEXT_PUBLIC_API_URL;
 
 export const api = axios.create({
-  baseURL: apiUrl,
+  baseURL: baseUr,
   withCredentials: true,
 });
 
