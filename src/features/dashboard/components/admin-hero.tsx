@@ -9,6 +9,7 @@ import { Skeleton } from "@/src/components/ui/skeleton";
 import { PendingOrder } from "../types/admin-hero-type";
 import { formatTime } from "@/src/lib/format-time";
 import Link from "next/link";
+import { OrderStatus } from "../../order/types/order.types";
 
 export default function AdminHero() {
   const queryClient = useQueryClient();
@@ -114,7 +115,9 @@ export default function AdminHero() {
                 <div className="mt-auto flex gap-2 pt-4">
                   <button
                     disabled={isPending}
-                    onClick={() => mutate({ id: order.id, status: "SHIPPED" })}
+                    onClick={() =>
+                      mutate({ id: order.id, status: OrderStatus.SHIPPED })
+                    }
                     className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-green-600 px-3 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
                   >
                     <Check className="h-4 w-4" />
@@ -123,7 +126,7 @@ export default function AdminHero() {
                   <button
                     disabled={isPending}
                     onClick={() =>
-                      mutate({ id: order.id, status: "CANCELLED" })
+                      mutate({ id: order.id, status: OrderStatus.CANCELED })
                     }
                     className="flex items-center justify-center rounded-lg border px-3 py-2 text-sm text-red-600 transition-colors hover:bg-red-50 disabled:opacity-50"
                   >
