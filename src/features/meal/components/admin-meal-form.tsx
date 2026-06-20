@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getMealById,
   mealInfoSchema,
@@ -21,8 +21,11 @@ import { useEffect } from "react";
 import { Textarea } from "@/src/components/ui/textarea";
 import { ADMINMACRO, ADMINMICRO } from "../config/nutrition.config";
 import UnitInput from "./unit-input";
+import { updateMeal, UpdateMealPaylaod } from "../api/update-meal-by-id";
+import { toast } from "sonner";
 
 export const AdminMealForm = ({ id }: { id: number }) => {
+  const queryClient = useQueryClient();
   const form = useForm<MealInfoSchema>({
     resolver: zodResolver(mealInfoSchema),
     defaultValues: {
@@ -59,6 +62,17 @@ export const AdminMealForm = ({ id }: { id: number }) => {
     queryFn: () => getMealById(id),
   });
 
+  const mutation = useMutation({
+    mutationFn: (values: UpdateMealPaylaod) => updateMeal(id, values),
+    onSuccess: () => {
+      toast.success("Successfully");
+      queryClient.invalidateQueries({ queryKey: ["meal", id] });
+    },
+    onError: () => {
+      toast.error("Error");
+    },
+  });
+
   useEffect(() => {
     if (data) {
       const macro = data.macronutrients;
@@ -71,7 +85,7 @@ export const AdminMealForm = ({ id }: { id: number }) => {
         ingredients: data.ingredients ?? "",
         imageUrl: data.imageUrl ?? "",
         price: data.price ?? 0,
-        chefId: data.chefId ? String(data.chefId) : null,
+        chefId: data.chefId ? Number(data.chefId) : null,
         macronutrients: {
           calories: Number(macro?.calories ?? 0),
           fat: Number(macro?.fat ?? 0),
@@ -94,15 +108,14 @@ export const AdminMealForm = ({ id }: { id: number }) => {
     }
   }, [data, form]);
 
-  // TODO: update it later!
   const onSubmit = (values: MealInfoSchema) => {
-    console.log(values);
+    const { id, ...payload } = values;
+    mutation.mutate(payload);
   };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="pb-10">
-        {/* ID — readonly */}
         <div className="mb-6">
           <p className="text-[10px] uppercase tracking-widest font-medium text-muted-foreground mb-1">
             meal / id

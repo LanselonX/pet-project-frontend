@@ -21,7 +21,6 @@ export function AppSidebar() {
           <SidebarMenu>
             {NAV_MAIN_CONFIG.map((item) => (
               <SidebarMenuItem key={item.title}>
-                {/* TODO: check rendr mb not a good practice */}
                 <SidebarMenuButton render={<a href={item.url} />}>
                   <item.icon />
                   <span>{item.title}</span>

@@ -41,7 +41,6 @@ export const ADMINMICRO: AdminMicroConfig[] = [
   { name: "micronutrients.sodium", label: "Натрий", unit: "mg" },
 ] as const;
 
-// TODO: translate labels to English if needed
 export const MICROS: MicroConfig[] = [
   { label: "Омега", value: "omega" },
   { label: "Магний", value: "magnesium" },

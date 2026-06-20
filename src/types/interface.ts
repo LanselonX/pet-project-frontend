@@ -11,6 +11,5 @@ export interface IPagination<T> {
   data: T[];
   totalCount: number;
   totalPages: number;
-  // TODO: need to check it
   limit: number;
 }

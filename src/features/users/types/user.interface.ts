@@ -2,6 +2,6 @@ export interface UserInfo {
   id: number;
   email: string;
   name: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
 }

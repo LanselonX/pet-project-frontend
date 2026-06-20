@@ -25,8 +25,6 @@ export const RegistrationForm = () => {
       email: "",
       password: "",
       name: "",
-      // TODO: NEED REMOVE ROLES
-      role: "USER",
     },
   });
 
