@@ -5,7 +5,7 @@ export const ADMINHERO: AdminConfig[] = [
   { label: "Всего блюд", value: "meals" },
   { label: "Сделано заказов", value: "orders" },
   { label: "Пользователей", value: "users" },
-  { label: "Выручка", value: "revuene" },
+  { label: "Выручка", value: "revenue" },
 ] as const;
 
 export const QUICK_LINKS = [

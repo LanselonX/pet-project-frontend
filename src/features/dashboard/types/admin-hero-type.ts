@@ -16,7 +16,7 @@ export interface AdminHeroCount {
   meals: number;
   users: number;
   orders: number;
-  revuene: number;
+  revenue: number;
   pendingOrders: PendingOrder[];
 }
 
@@ -24,6 +24,6 @@ export interface AdminConfig {
   label: string;
   value: Extract<
     keyof AdminHeroCount,
-    "meals" | "users" | "orders" | "revuene"
+    "meals" | "users" | "orders" | "revenue"
   >;
 }
